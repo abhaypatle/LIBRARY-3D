@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #e2e8f0;
+  background: #020817;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(59, 130, 246, 0.22), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.16), transparent 25%),
+    #020817;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+.glass {
+  background: rgba(15, 23, 42, 0.68);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.35);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+}
+
+.deep-card {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.55));
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.book-3d {
+  transform-style: preserve-3d;
+  animation: floatBook 7s ease-in-out infinite;
+}
+
+@keyframes floatBook {
+  0%, 100% { transform: translateY(0px) rotateX(10deg) rotateY(-8deg); }
+  50% { transform: translateY(-16px) rotateX(12deg) rotateY(6deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(59,130,246,0); }
+  50% { box-shadow: 0 0 28px rgba(59,130,246,0.45); }
+}
+
+.status-pulse {
+  animation: pulseGlow 2.4s ease-in-out infinite;
+}
+
+.grid-availability {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.seat-button {
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.seat-button:hover {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.ring {
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.28);
+}
+
+@media (max-width: 768px) {
+  .grid-availability {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
