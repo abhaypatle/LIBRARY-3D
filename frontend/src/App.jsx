@@ -19,7 +19,7 @@ export default function App() {
   const [complaints, setComplaints] = useState([]);
   const [broadcasts, setBroadcasts] = useState([]);
 
-  const [complaintForm, setComplaintForm] = useState({ issueCategory: 'AC / Climate', description: '', photoUrl: '[https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300&auto=format&fit=crop&q=80](https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300&auto=format&fit=crop&q=80)' });
+  const [complaintForm, setComplaintForm] = useState({ issueCategory: 'AC / Climate', description: '', photoUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300&auto=format&fit=crop&q=80' });
 
   const [chatOpen, setChatOpen] = useState(false);
   const [chatPhone, setChatPhone] = useState('');
@@ -108,7 +108,7 @@ export default function App() {
     });
     const data = await res.json();
     alert(data.message);
-    setComplaintForm({ issueCategory: 'AC / Climate', description: '', photoUrl: '[https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300&auto=format&fit=crop&q=80](https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300&auto=format&fit=crop&q=80)' });
+    setComplaintForm({ issueCategory: 'AC / Climate', description: '', photoUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300&auto=format&fit=crop&q=80' });
     fetchData();
   };
 
@@ -260,17 +260,17 @@ export default function App() {
             </div>
 
             <div className="flex gap-2 bg-slate-900 p-2 rounded-2xl border border-slate-800 overflow-x-auto">
-              <button onClick={() => setAdminTab('seats')} className={px-4 py-2 rounded-xl text-xs font-bold }>70 Seats Grid</button>
-              <button onClick={() => setAdminTab('complaints')} className={px-4 py-2 rounded-xl text-xs font-bold }>Complaints</button>
+              <button onClick={() => setAdminTab('seats')} className="px-4 py-2 rounded-xl text-xs font-bold bg-cyan-600 text-white">70 Seats Grid</button>
+              <button onClick={() => setAdminTab('complaints')} className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300">Complaints</button>
               {adminRole === 'owner' && (
-                <button onClick={() => setAdminTab('financials')} className={px-4 py-2 rounded-xl text-xs font-bold }>🔒 Owner P&L Ledger</button>
+                <button onClick={() => setAdminTab('financials')} className="px-4 py-2 rounded-xl text-xs font-bold bg-red-600 text-white">🔒 Owner P&L Ledger</button>
               )}
             </div>
 
             {adminTab === 'seats' && (
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {seats.map((seat) => (
-                  <div key={seat.number} className={p-4 rounded-2xl border flex flex-col items-center justify-center shadow-lg }>
+                  <div key={seat.number} className="p-4 rounded-2xl border flex flex-col items-center justify-center shadow-lg bg-slate-900/60 border-slate-800">
                     <span className="text-xs font-black text-cyan-400">Seat #{seat.number}</span>
                     <span className="text-[10px] font-bold text-slate-300 mt-1">{seat.number <= 32 ? '👦 Boys Only' : '👥 Common'}</span>
                   </div>
@@ -319,7 +319,7 @@ export default function App() {
             </div>
             <div className="p-3 h-40 overflow-y-auto space-y-2 text-xs bg-slate-950 flex flex-col">
               {chatLogs.map((log, idx) => (
-                <div key={idx} className={p-2 rounded-xl max-w-[85%] }>{log.text}</div>
+                <div key={idx} className="p-2 rounded-xl max-w-[85%] bg-slate-800 text-slate-200 self-start">{log.text}</div>
               ))}
             </div>
             <form onSubmit={handleChatSubmit} className="p-3 bg-slate-900 flex gap-2 border-t border-slate-800">
