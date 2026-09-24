@@ -2,28 +2,18 @@
 
 export default function HeroSection({ setActiveTab }) {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between p-3 sm:p-6">
-      {/* Navbar / Header */}
-      <nav className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between bg-slate-900 border border-slate-800 rounded-2xl p-4 gap-4 shadow-xl z-50">
-        <div className="text-cyan-400 font-bold text-xl tracking-wider text-center md:text-left">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-start p-4">
+      {/* Navbar / Header (Mobile First Stack) */}
+      <nav className="w-full max-w-6xl mx-auto flex flex-col items-center bg-slate-900 border border-slate-800 rounded-2xl p-4 gap-3 shadow-xl z-50 mb-10">
+        <div className="text-cyan-400 font-bold text-2xl tracking-wider w-full text-center mb-2">
           AVANI LIBRARY 3D
         </div>
-        <div className="flex flex-wrap justify-center items-center gap-2 text-xs sm:text-sm font-medium w-full md:w-auto">
-          <button onClick={() => setActiveTab('home')} className="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition">
-            Home
-          </button>
-          <button onClick={() => setActiveTab('rules')} className="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition">
-            Rules & Facility
-          </button>
-          <button onClick={() => setActiveTab('admission')} className="px-3 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white transition">
-            Admission
-          </button>
-          <button onClick={() => setActiveTab('login')} className="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition">
-            Login
-          </button>
-          <button onClick={() => setActiveTab('admin')} className="px-3 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white transition">
-            Admin Portal
-          </button>
+        <div className="grid grid-cols-3 sm:flex sm:flex-wrap justify-center items-center gap-2 w-full text-sm font-medium">
+          <button onClick={() => setActiveTab('home')} className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition col-span-1">Home</button>
+          <button onClick={() => setActiveTab('rules')} className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition col-span-2">Rules & Facility</button>
+          <button onClick={() => setActiveTab('admission')} className="px-3 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white transition col-span-1 sm:col-span-auto">Admission</button>
+          <button onClick={() => setActiveTab('login')} className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition col-span-1 sm:col-span-auto">Login</button>
+          <button onClick={() => setActiveTab('admin')} className="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition col-span-1 sm:col-span-auto">Admin Portal</button>
         </div>
       </nav>
 
