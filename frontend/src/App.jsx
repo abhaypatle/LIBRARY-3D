@@ -19,7 +19,7 @@ export default function App() {
   const [complaints, setComplaints] = useState([]);
   const [broadcasts, setBroadcasts] = useState([]);
 
-  const [complaintForm, setComplaintForm] = useState({ issueCategory: 'AC / Climate', description: '', photoUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300&auto=format&fit=crop&q=80' });
+  const [complaintForm, setComplaintForm] = useState({ issueCategory: 'AC / Climate', description: '', photoUrl: '[https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300&auto=format&fit=crop&q=80](https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300&auto=format&fit=crop&q=80)' });
 
   const [chatOpen, setChatOpen] = useState(false);
   const [chatPhone, setChatPhone] = useState('');
@@ -108,7 +108,7 @@ export default function App() {
     });
     const data = await res.json();
     alert(data.message);
-    setComplaintForm({ issueCategory: 'AC / Climate', description: '', photoUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300&auto=format&fit=crop&q=80' });
+    setComplaintForm({ issueCategory: 'AC / Climate', description: '', photoUrl: '[https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300&auto=format&fit=crop&q=80](https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300&auto=format&fit=crop&q=80)' });
     fetchData();
   };
 
