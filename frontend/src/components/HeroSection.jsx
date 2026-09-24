@@ -2,18 +2,28 @@
 
 export default function HeroSection({ setActiveTab }) {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-start p-4">
-      {/* Navbar / Header (Mobile First Stack) */}
-      <nav className="w-full max-w-6xl mx-auto flex flex-col items-center bg-slate-900 border border-slate-800 rounded-2xl p-4 gap-3 shadow-xl z-50 mb-10">
-        <div className="text-cyan-400 font-bold text-2xl tracking-wider w-full text-center mb-2">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between p-4">
+      {/* Navbar / Header */}
+      <nav className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between bg-slate-900 border border-slate-800 rounded-2xl p-4 gap-3 shadow-xl z-50">
+        <div className="text-cyan-400 font-bold text-lg tracking-wider text-center md:text-left">
           AVANI LIBRARY 3D
         </div>
-        <div className="grid grid-cols-3 sm:flex sm:flex-wrap justify-center items-center gap-2 w-full text-sm font-medium">
-          <button onClick={() => setActiveTab('home')} className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition col-span-1">Home</button>
-          <button onClick={() => setActiveTab('rules')} className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition col-span-2">Rules & Facility</button>
-          <button onClick={() => setActiveTab('admission')} className="px-3 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white transition col-span-1 sm:col-span-auto">Admission</button>
-          <button onClick={() => setActiveTab('login')} className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition col-span-1 sm:col-span-auto">Login</button>
-          <button onClick={() => setActiveTab('admin')} className="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition col-span-1 sm:col-span-auto">Admin Portal</button>
+        <div className="flex flex-wrap justify-center items-center gap-2 text-xs font-medium">
+          <button onClick={() => setActiveTab('home')} className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200">
+            Home
+          </button>
+          <button onClick={() => setActiveTab('rules')} className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200">
+            Rules & Facility
+          </button>
+          <button onClick={() => setActiveTab('admission')} className="px-3 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white">
+            Admission
+          </button>
+          <button onClick={() => setActiveTab('login')} className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200">
+            Login
+          </button>
+          <button onClick={() => setActiveTab('admin')} className="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white">
+            Admin Portal
+          </button>
         </div>
       </nav>
 
@@ -26,10 +36,10 @@ export default function HeroSection({ setActiveTab }) {
           70 Seats Capacity: Seats 1-32 Boys Only, Seats 33-70 Common. Automated Fee Ledgers & WhatsApp Reminders.
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto px-4">
-          <button onClick={() => setActiveTab('admission')} className="w-full sm:w-auto px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold shadow-lg transition">
+          <button onClick={() => setActiveTab('admission')} className="w-full sm:w-auto px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold shadow-lg">
             Register Seat Now
           </button>
-          <button onClick={() => setActiveTab('rules')} className="w-full sm:w-auto px-6 py-3 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-200 font-medium transition">
+          <button onClick={() => setActiveTab('rules')} className="w-full sm:w-auto px-6 py-3 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-200 font-medium">
             View Rules & Facility
           </button>
         </div>
