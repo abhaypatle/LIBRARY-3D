@@ -5,17 +5,14 @@ export default function App() {
   const [loggedInStudent, setLoggedInStudent] = useState(null);
   const [loginInput, setLoginInput] = useState('');
 
-  // Admin & Staff Login State
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
-  const [adminRole, setAdminRole] = useState(''); // 'owner' or 'staff'
+  const [adminRole, setAdminRole] = useState('');
   const [adminCreds, setAdminCreds] = useState({ username: '', password: '' });
 
-  // Registration Form State (₹100 ID + ₹500 Monthly)
   const [regData, setRegData] = useState({ name: '', phone: '', email: '', gender: 'Male', plan: 'Monthly (₹500)', seatNumber: '1', shift: 'Full Day (6 AM - 10 PM)', paidAmount: '600' });
   const [registeredStudent, setRegisteredStudent] = useState(null);
   const [showRulesModal, setShowRulesModal] = useState(false);
 
-  // Admin States
   const [adminTab, setAdminTab] = useState('seats');
   const [financials, setFinancials] = useState({ totalCollection: 0, totalExpenses: 0, netProfit: 0, expenses: [] });
   const [studentsList, setStudentsList] = useState([]);
@@ -24,7 +21,6 @@ export default function App() {
 
   const [complaintForm, setComplaintForm] = useState({ issueCategory: 'AC / Climate', description: '', photoUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300&auto=format&fit=crop&q=80' });
 
-  // WhatsApp Chatbot State
   const [chatOpen, setChatOpen] = useState(false);
   const [chatPhone, setChatPhone] = useState('');
   const [chatMessage, setChatMessage] = useState('');
@@ -116,16 +112,6 @@ export default function App() {
     fetchData();
   };
 
-  const resolveComplaint = async (complaintId) => {
-    const res = await fetch("http://localhost:5001/api/admin/complaints/resolve", {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ complaintId })
-    });
-    const data = await res.json();
-    alert(data.message);
-    fetchData();
-  };
-
   const handleChatSubmit = async (e) => {
     e.preventDefault();
     if(!chatMessage) return;
@@ -144,23 +130,23 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-slate-900 text-slate-100 font-sans p-4 sm:p-6 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-slate-900 text-slate-100 font-sans p-3 sm:p-6 relative overflow-hidden">
       <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-      {/* Navbar with Rules & Facility button - Responsive Fix */}
-      <header className="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto backdrop-blur-md bg-slate-900/80 border border-slate-800 px-4 sm:px-6 py-4 rounded-2xl shadow-2xl mb-8 relative z-10 gap-4">
-        <div className="cursor-pointer text-center md:text-left" onClick={() => setCurrentView('home')}>
+      {/* Navbar with Responsive Stack */}
+      <header className="flex flex-col items-center max-w-7xl mx-auto backdrop-blur-md bg-slate-900/90 border border-slate-800 p-4 rounded-2xl shadow-2xl mb-8 relative z-10 gap-3">
+        <div className="cursor-pointer text-center" onClick={() => setCurrentView('home')}>
           <h1 className="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-cyan-400 via-teal-300 to-blue-500 bg-clip-text text-transparent">
             AVANI LIBRARY 3D
           </h1>
-          <p className="text-[10px] tracking-widest text-cyan-400 uppercase font-semibold">70 Seats Automated Management</p>
+          <p className="text-[9px] sm:text-[10px] tracking-widest text-cyan-400 uppercase font-semibold">70 Seats Automated Management</p>
         </div>
-        <div className="flex flex-wrap justify-center items-center gap-2 text-xs font-semibold">
-          <button onClick={() => setCurrentView('home')} className="px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 hover:bg-slate-700 transition">Home</button>
-          <button onClick={() => setShowRulesModal(true)} className="px-3 py-2 rounded-xl bg-cyan-950/50 border border-cyan-700/50 text-cyan-300 hover:bg-cyan-900/50 transition">📋 Rules</button>
-          <button onClick={() => setCurrentView('register')} className="px-3 py-2 rounded-xl bg-cyan-600 text-white shadow-lg">Admission</button>
-          <button onClick={() => setCurrentView('login')} className="px-3 py-2 rounded-xl bg-slate-800 border border-slate-700">Login</button>
-          <button onClick={() => { setCurrentView('admin-portal'); setIsAdminLoggedIn(false); }} className="px-3 py-2 rounded-xl bg-blue-600 text-white shadow-lg">Admin</button>
+        <div className="flex flex-wrap justify-center items-center gap-1.5 sm:gap-2 text-xs font-semibold w-full pt-2 border-t border-slate-800">
+          <button onClick={() => setCurrentView('home')} className="px-3 py-1.5 rounded-xl bg-slate-800 border border-slate-700 hover:bg-slate-700 transition">Home</button>
+          <button onClick={() => setShowRulesModal(true)} className="px-3 py-1.5 rounded-xl bg-cyan-950/50 border border-cyan-700/50 text-cyan-300 hover:bg-cyan-900/50 transition">📋 Rules</button>
+          <button onClick={() => setCurrentView('register')} className="px-3 py-1.5 rounded-xl bg-cyan-600 text-white shadow-lg">Admission</button>
+          <button onClick={() => setCurrentView('login')} className="px-3 py-1.5 rounded-xl bg-slate-800 border border-slate-700">Login</button>
+          <button onClick={() => { setCurrentView('admin-portal'); setIsAdminLoggedIn(false); }} className="px-3 py-1.5 rounded-xl bg-blue-600 text-white shadow-lg">Admin</button>
         </div>
       </header>
 
@@ -240,7 +226,6 @@ export default function App() {
               </div>
             </div>
 
-            {/* Complaint Box */}
             <div className="bg-slate-900 border border-slate-800 p-6 rounded-3xl shadow-2xl space-y-4">
               <h3 className="text-sm font-bold text-cyan-300">🛠️ Maintenance Complaint Box</h3>
               <form onSubmit={handleComplaintSubmit} className="space-y-3">
@@ -323,7 +308,6 @@ export default function App() {
         )}
       </main>
 
-      {/* WhatsApp Chatbot Widget */}
       <div className="fixed bottom-6 right-6 z-50">
         {!chatOpen ? (
           <button onClick={() => setChatOpen(true)} className="bg-emerald-600 hover:bg-emerald-500 text-white p-4 rounded-full shadow-2xl flex items-center gap-2 font-bold text-xs">💬 AI Assistant</button>
