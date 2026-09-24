@@ -4,7 +4,7 @@ export default function App() {
   const [currentView, setCurrentView] = useState('home');
   const [loggedInStudent, setLoggedInStudent] = useState(null);
   const [loginInput, setLoginInput] = useState('');
-  
+
   // Admin & Staff Login State
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
   const [adminRole, setAdminRole] = useState(''); // 'owner' or 'staff'
@@ -21,7 +21,7 @@ export default function App() {
   const [studentsList, setStudentsList] = useState([]);
   const [complaints, setComplaints] = useState([]);
   const [broadcasts, setBroadcasts] = useState([]);
-  
+
   const [complaintForm, setComplaintForm] = useState({ issueCategory: 'AC / Climate', description: '', photoUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300&auto=format&fit=crop&q=80' });
 
   // WhatsApp Chatbot State
@@ -144,47 +144,47 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-slate-900 text-slate-100 font-sans p-6 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-slate-900 text-slate-100 font-sans p-4 sm:p-6 relative overflow-hidden">
       <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
-      
-      {/* Navbar with Rules & Facility button */}
-      <header className="flex justify-between items-center max-w-7xl mx-auto backdrop-blur-md bg-slate-900/60 border border-slate-800/80 px-6 py-4 rounded-2xl shadow-2xl mb-8 relative z-10">
-        <div className="cursor-pointer" onClick={() => setCurrentView('home')}>
-          <h1 className="text-2xl font-extrabold bg-gradient-to-r from-cyan-400 via-teal-300 to-blue-500 bg-clip-text text-transparent">
+
+      {/* Navbar with Rules & Facility button - Responsive Fix */}
+      <header className="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto backdrop-blur-md bg-slate-900/80 border border-slate-800 px-4 sm:px-6 py-4 rounded-2xl shadow-2xl mb-8 relative z-10 gap-4">
+        <div className="cursor-pointer text-center md:text-left" onClick={() => setCurrentView('home')}>
+          <h1 className="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-cyan-400 via-teal-300 to-blue-500 bg-clip-text text-transparent">
             AVANI LIBRARY 3D
           </h1>
           <p className="text-[10px] tracking-widest text-cyan-400 uppercase font-semibold">70 Seats Automated Management</p>
         </div>
-        <div className="flex gap-3">
-          <button onClick={() => setCurrentView('home')} className="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800/60 border border-slate-700 hover:bg-slate-700 transition">Home</button>
-          <button onClick={() => setShowRulesModal(true)} className="px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-950/50 border border-cyan-700/50 text-cyan-300 hover:bg-cyan-900/50 transition">📋 Rules & Facility</button>
-          <button onClick={() => setCurrentView('register')} className="px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-600 text-white shadow-lg">Admission</button>
-          <button onClick={() => setCurrentView('login')} className="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800/60 border border-slate-700">Login</button>
-          <button onClick={() => { setCurrentView('admin-portal'); setIsAdminLoggedIn(false); }} className="px-4 py-2 rounded-xl text-xs font-semibold bg-blue-600 text-white shadow-lg">Admin Portal</button>
+        <div className="flex flex-wrap justify-center items-center gap-2 text-xs font-semibold">
+          <button onClick={() => setCurrentView('home')} className="px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 hover:bg-slate-700 transition">Home</button>
+          <button onClick={() => setShowRulesModal(true)} className="px-3 py-2 rounded-xl bg-cyan-950/50 border border-cyan-700/50 text-cyan-300 hover:bg-cyan-900/50 transition">📋 Rules</button>
+          <button onClick={() => setCurrentView('register')} className="px-3 py-2 rounded-xl bg-cyan-600 text-white shadow-lg">Admission</button>
+          <button onClick={() => setCurrentView('login')} className="px-3 py-2 rounded-xl bg-slate-800 border border-slate-700">Login</button>
+          <button onClick={() => { setCurrentView('admin-portal'); setIsAdminLoggedIn(false); }} className="px-3 py-2 rounded-xl bg-blue-600 text-white shadow-lg">Admin</button>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto relative z-10">
         {currentView === 'home' && (
-          <div className="text-center py-20 space-y-6">
-            <h2 className="text-5xl font-black bg-gradient-to-r from-white to-cyan-400 bg-clip-text text-transparent">Avani Library Study Hub</h2>
-            <p className="text-slate-400 max-w-xl mx-auto text-sm">70 Seats Capacity: Seats 1-32 Boys Only, Seats 33-70 Common. Automated Fee Ledgers & WhatsApp Reminders.</p>
-            <div className="flex justify-center gap-4">
-              <button onClick={() => setCurrentView('register')} className="bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-3 rounded-2xl font-bold text-sm shadow-xl">Register Seat Now</button>
-              <button onClick={() => setShowRulesModal(true)} className="bg-slate-900 border border-slate-700 text-slate-200 px-6 py-3 rounded-2xl font-bold text-sm">View Rules & Facility</button>
+          <div className="text-center py-16 sm:py-20 space-y-6">
+            <h2 className="text-3xl sm:text-5xl font-black bg-gradient-to-r from-white to-cyan-400 bg-clip-text text-transparent">Avani Library Study Hub</h2>
+            <p className="text-slate-400 max-w-xl mx-auto text-xs sm:text-sm px-4">70 Seats Capacity: Seats 1-32 Boys Only, Seats 33-70 Common. Automated Fee Ledgers & WhatsApp Reminders.</p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 px-4">
+              <button onClick={() => setCurrentView('register')} className="bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-3 rounded-2xl font-bold text-sm shadow-xl w-full sm:w-auto">Register Seat Now</button>
+              <button onClick={() => setShowRulesModal(true)} className="bg-slate-900 border border-slate-700 text-slate-200 px-6 py-3 rounded-2xl font-bold text-sm w-full sm:w-auto">View Rules & Facility</button>
             </div>
           </div>
         )}
 
         {currentView === 'register' && (
-          <div className="max-w-lg mx-auto bg-slate-900/90 border border-slate-800 p-8 rounded-3xl shadow-2xl">
-            <h2 className="text-2xl font-bold text-cyan-400 mb-2">Student Admission & ID Kiosk</h2>
+          <div className="max-w-lg mx-auto bg-slate-900/90 border border-slate-800 p-6 sm:p-8 rounded-3xl shadow-2xl">
+            <h2 className="text-xl sm:text-2xl font-bold text-cyan-400 mb-2">Student Admission & ID Kiosk</h2>
             <p className="text-xs text-slate-400 mb-6">₹100 ID Generation + ₹500/month fee structure (Online/Offline payment supported).</p>
             {!registeredStudent ? (
               <form onSubmit={handleRegister} className="space-y-4">
                 <input type="text" required value={regData.name} onChange={e => setRegData({...regData, name: e.target.value})} className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs outline-none text-slate-200" placeholder="Full Name" />
                 <input type="text" required value={regData.phone} onChange={e => setRegData({...regData, phone: e.target.value})} className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs outline-none text-slate-200" placeholder="Phone Number" />
-                
+
                 <div className="grid grid-cols-2 gap-3">
                   <select value={regData.gender} onChange={e => setRegData({...regData, gender: e.target.value})} className="bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs outline-none text-slate-200">
                     <option value="Male">Male (Boys 1-70)</option>
@@ -215,8 +215,8 @@ export default function App() {
         )}
 
         {currentView === 'login' && (
-          <div className="max-w-md mx-auto bg-slate-900/90 border border-slate-800 p-8 rounded-3xl shadow-2xl">
-            <h2 className="text-2xl font-bold text-cyan-400 mb-4">Student Login</h2>
+          <div className="max-w-md mx-auto bg-slate-900/90 border border-slate-800 p-6 sm:p-8 rounded-3xl shadow-2xl">
+            <h2 className="text-xl sm:text-2xl font-bold text-cyan-400 mb-4">Student Login</h2>
             <form onSubmit={handleLogin} className="space-y-4">
               <input type="text" required value={loginInput} onChange={e => setLoginInput(e.target.value)} className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs outline-none text-slate-200" placeholder="Enter Phone or ID" />
               <button type="submit" className="w-full bg-cyan-600 text-white py-3 rounded-xl text-xs font-bold">Access Portal</button>
@@ -258,7 +258,7 @@ export default function App() {
 
         {currentView === 'admin-portal' && !isAdminLoggedIn && (
           <div className="max-w-md mx-auto bg-slate-900/90 border border-slate-800 p-8 rounded-3xl shadow-2xl space-y-6">
-            <h2 className="text-2xl font-black text-cyan-400 text-center mb-1">🔐 Secure Admin & Staff Login</h2>
+            <h2 className="text-xl sm:text-2xl font-black text-cyan-400 text-center mb-1">🔐 Secure Admin & Staff Login</h2>
             <form onSubmit={handleAdminLogin} className="space-y-4">
               <input type="text" required value={adminCreds.username} onChange={e => setAdminCreds({...adminCreds, username: e.target.value})} className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs outline-none text-slate-200" placeholder="Username (owner / staff)" />
               <input type="password" required value={adminCreds.password} onChange={e => setAdminCreds({...adminCreds, password: e.target.value})} className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs outline-none text-slate-200" placeholder="Password" />
@@ -275,18 +275,17 @@ export default function App() {
             </div>
 
             <div className="flex gap-2 bg-slate-900 p-2 rounded-2xl border border-slate-800 overflow-x-auto">
-              <button onClick={() => setAdminTab('seats')} className={`px-4 py-2 rounded-xl text-xs font-bold ${adminTab === 'seats' ? 'bg-cyan-600 text-white' : 'text-slate-400'}`}>70 Seats 4-Column Grid</button>
-              <button onClick={() => setAdminTab('complaints')} className={`px-4 py-2 rounded-xl text-xs font-bold ${adminTab === 'complaints' ? 'bg-cyan-600 text-white' : 'text-slate-400'}`}>Complaints</button>
+              <button onClick={() => setAdminTab('seats')} className={px-4 py-2 rounded-xl text-xs font-bold }>70 Seats Grid</button>
+              <button onClick={() => setAdminTab('complaints')} className={px-4 py-2 rounded-xl text-xs font-bold }>Complaints</button>
               {adminRole === 'owner' && (
-                <button onClick={() => setAdminTab('financials')} className={`px-4 py-2 rounded-xl text-xs font-bold ${adminTab === 'financials' ? 'bg-red-600 text-white' : 'text-red-400'}`}>🔒 Owner P&L Ledger</button>
+                <button onClick={() => setAdminTab('financials')} className={px-4 py-2 rounded-xl text-xs font-bold }>🔒 Owner P&L Ledger</button>
               )}
             </div>
 
-            {/* 70 Seats Grid with 4-Column Layout & Gender Rule Validation */}
             {adminTab === 'seats' && (
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {seats.map((seat) => (
-                  <div key={seat.number} className={`p-4 rounded-2xl border flex flex-col items-center justify-center shadow-lg ${seat.number <= 32 ? 'bg-blue-950/40 border-blue-800/60' : 'bg-slate-900/60 border-slate-800'}`}>
+                  <div key={seat.number} className={p-4 rounded-2xl border flex flex-col items-center justify-center shadow-lg }>
                     <span className="text-xs font-black text-cyan-400">Seat #{seat.number}</span>
                     <span className="text-[10px] font-bold text-slate-300 mt-1">{seat.number <= 32 ? '👦 Boys Only' : '👥 Common'}</span>
                   </div>
@@ -307,12 +306,11 @@ export default function App() {
           </div>
         )}
 
-        {/* Rules & Facility Modal */}
         {showRulesModal && (
           <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-            <div className="bg-slate-900 border border-cyan-500/40 rounded-3xl p-8 w-full max-w-lg relative space-y-4 shadow-2xl">
+            <div className="bg-slate-900 border border-cyan-500/40 rounded-3xl p-6 sm:p-8 w-full max-w-lg relative space-y-4 shadow-2xl">
               <button onClick={() => setShowRulesModal(false)} className="absolute top-4 right-4 text-slate-400 font-bold hover:text-white">✕</button>
-              <h3 className="text-xl font-bold text-cyan-400">📋 Avani Library Rules & Facilities</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-cyan-400">📋 Avani Library Rules & Facilities</h3>
               <ul className="text-xs text-slate-300 space-y-2 list-disc pl-4 leading-relaxed">
                 <li><strong>Seat Allocation:</strong> Seats 1 to 32 are reserved exclusively for Boys. Seats 33 to 70 are Common for all.</li>
                 <li><strong>Fee Structure:</strong> ₹100 for ID generation + ₹500 per month. Online UPI or Offline cash payment accepted.</li>
@@ -337,7 +335,7 @@ export default function App() {
             </div>
             <div className="p-3 h-40 overflow-y-auto space-y-2 text-xs bg-slate-950 flex flex-col">
               {chatLogs.map((log, idx) => (
-                <div key={idx} className={`p-2 rounded-xl max-w-[85%] ${log.sender === 'user' ? 'bg-cyan-600 text-white self-end' : 'bg-slate-800 text-slate-200 self-start'}`}>{log.text}</div>
+                <div key={idx} className={p-2 rounded-xl max-w-[85%] }>{log.text}</div>
               ))}
             </div>
             <form onSubmit={handleChatSubmit} className="p-3 bg-slate-900 flex gap-2 border-t border-slate-800">
