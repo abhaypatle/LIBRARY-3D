@@ -4,24 +4,24 @@ export default function HeroSection({ setActiveTab }) {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between p-4">
       {/* Navbar / Header */}
-      <nav className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between bg-slate-900 border border-slate-800 rounded-2xl p-4 gap-3 shadow-xl z-50">
-        <div className="text-cyan-400 font-bold text-lg tracking-wider text-center md:text-left">
+      <nav className="w-full max-w-6xl mx-auto flex flex-col items-center bg-slate-900 border border-slate-800 rounded-2xl p-4 gap-4 shadow-xl z-50">
+        <div className="text-cyan-400 font-bold text-xl tracking-wider text-center">
           AVANI LIBRARY 3D
         </div>
-        <div className="flex flex-wrap justify-center items-center gap-2 text-xs font-medium">
-          <button onClick={() => setActiveTab('home')} className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-2 w-full text-xs font-medium">
+          <button onClick={() => setActiveTab('home')} className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-center">
             Home
           </button>
-          <button onClick={() => setActiveTab('rules')} className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200">
+          <button onClick={() => setActiveTab('rules')} className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-center">
             Rules & Facility
           </button>
-          <button onClick={() => setActiveTab('admission')} className="px-3 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white">
+          <button onClick={() => setActiveTab('admission')} className="px-3 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-center">
             Admission
           </button>
-          <button onClick={() => setActiveTab('login')} className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200">
+          <button onClick={() => setActiveTab('login')} className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-center">
             Login
           </button>
-          <button onClick={() => setActiveTab('admin')} className="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white">
+          <button onClick={() => setActiveTab('admin')} className="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-center col-span-2 sm:col-span-auto">
             Admin Portal
           </button>
         </div>
